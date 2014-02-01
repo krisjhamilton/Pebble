@@ -1,8 +1,11 @@
 #include <pebble.h>
- 
+
+InverterLayer *inv_layer; 
 Window *window;
 TextLayer *text_layer;
 char buffer[] = "00:00";
+
+
 
 void tick_handler(struct tm *tick_time, TimeUnits units_changed)
 {
@@ -23,7 +26,12 @@ void window_load(Window *window)
 	text_layer_set_font(text_layer, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
 	 
 	layer_add_child(window_get_root_layer(window), (Layer*) text_layer);
+	//simple text on screen
 	//text_layer_set_text(text_layer, "Anything you want, as long as it is in quotes!");
+	
+	//Inverter layer
+	inv_layer = inverter_layer_create(GRect(0, 50, 144, 62));
+	layer_add_child(window_get_root_layer(window), (Layer*) inv_layer);
 	
 	//Get a time structure so that the face doesn't start blank
 	struct tm *t;
@@ -37,7 +45,10 @@ void window_load(Window *window)
  
 void window_unload(Window *window)
 {
-  //We will safely destroy the Window's elements here!
+    //We will safely destroy the Window's elements here!
+    text_layer_destroy(text_layer);
+ 
+    inverter_layer_destroy(inv_layer);
 }
  
 void init()
