@@ -1,0 +1,18 @@
+{
+    "versionLabel": "1.0",
+    "uuid": "3faee8ea-9067-4439-9042-0f6dc100b6c4",
+    "appKeys": {},
+    "longName": "Sport",
+    "versionCode": 1,
+    "capabilities": [
+        ""
+    ],
+    "shortName": "Sport",
+    "companyName": "akstudio",
+    "watchapp": {
+        "watchface": true
+    },
+    "resources": {
+        "media": []
+    }
+}
